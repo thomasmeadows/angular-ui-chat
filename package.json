@@ -4,7 +4,7 @@
   "description": "Angular UI Customizible chatroom that lets you determine how to store and retrieve data",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha test/test.js"
   },
   "repository": {
     "type": "git",
