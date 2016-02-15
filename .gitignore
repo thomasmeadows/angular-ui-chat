@@ -1,0 +1,17 @@
+node_modules
+bower_components
+.tmp
+dump.rdb
+*.seed
+*.log
+*.out
+*.pid
+npm-debug.log
+*~
+*#
+.DS_STORE
+.netbeans
+.idea
+.node_history
+.env
+.foreverignore

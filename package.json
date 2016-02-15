@@ -1,0 +1,35 @@
+{
+  "name": "angular-ui-chat",
+  "version": "1.0.0",
+  "description": "Angular UI Customizible chatroom that lets you determine how to store and retrieve data",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomasmeadows/angular-ui-chat.git"
+  },
+  "keywords": [
+    "angular",
+    "chatroom",
+    "ui",
+    "angular ui",
+    "angular-ui",
+    "chat",
+    "light",
+    "gravatar",
+    "custom",
+    "customizable"
+  ],
+  "author": "Thomas Meadows <thomasmeadows@users.noreply.github.com> (https://www.thomasjustinmeadows.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomasmeadows/angular-ui-chat/issues"
+  },
+  "homepage": "https://github.com/thomasmeadows/angular-ui-chat",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "chai": "^3.5.0"
+  }
+}
