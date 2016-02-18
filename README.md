@@ -12,7 +12,19 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
 
 ## Usage
 
-  <ui-chat options="optionsObject"></ui-chat>
+  1. run npm install angular-ui-chat in the cli
+  2. include the js file in your project
+  3. Add 'ui-chat' to your angular dependencies
+  4. Add to your html
+  ```html
+    <ui-chat options="uiChatOptions"></ui-chat>
+  ```
+  5. In your controller create an optionsObject
+  ```javascript
+    $scope.uiChatOptions = {
+      messages: [message array]
+    };
+  ```
 
 ## Tests
 

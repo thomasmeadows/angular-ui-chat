@@ -30,6 +30,7 @@
   "homepage": "https://github.com/thomasmeadows/angular-ui-chat",
   "devDependencies": {
     "mocha": "^2.4.5",
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "angular": ">1.2.6"
   }
 }
