@@ -1,3 +1,9 @@
+# 1.0.3
+Chat System Functional
+
+# 1.0.2
+Init Directive and Controller
+
 # 1.0.1
 Init Test Commit
 
