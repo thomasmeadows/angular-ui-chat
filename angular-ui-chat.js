@@ -23,7 +23,7 @@
       template:
       '<div class="ui-chat-main">' +
         '<div class="ui-chat-users"  ng-class="{\'ui-chat-users-left\':chatoptions.usersListSide===\'left\',\'ui-chat-users-right\':chatoptions.usersListSide===\'right\'}">' +
-          '<a class="username" ng-repeat="user in chatoptions.users">{{user.username}}</a>' +
+          '<div ng-repeat="user in chatoptions.users" class="username"><a>{{user.username}}</a></div>' +
         '</div>' +
         '<div class="ui-chat-chat">' +
 
