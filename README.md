@@ -16,11 +16,17 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
   2. include the js and the less or css file in your project. Alternately copy the less/css file into your folders and create your own stylings
   3. Add 'ui-chat' to your angular dependencies
   4. Add to your html
+
   ```html
+
     <ui-chat chatoptions="uiChatOptions"></ui-chat>
+
   ```
+
   5. In your controller create an optionsObject
+
   ```javascript
+
     $scope.uiChatOptions = {
       //'left' or 'right'; defaults to right
       usersListSide: 'right',
@@ -28,9 +34,13 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
       defaultUserImage: 'default for no user image'
       messages: [messagesFromUsersInChat]
     };
+
   ```
+
   6. Each array is an array of objects, the following should be contained in each.
+
   ```javascript
+
     var arrayOfUsersInChat = [];
     arrayOfUsersInChat.push({
       username: 'what to display',
@@ -38,8 +48,11 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
       image: 'an image for the user'
       admin: false // or true if they are a chat admin
     });
+
   ```
+
   ```javascript
+  
     var messagesFromUsersInChat = [];
     messagesFromUsersInChat.push({
       //username or id required
@@ -49,6 +62,7 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
       //username or id required
       message: 'message sent by user'
     });
+
   ```
 
 ## Tests
