@@ -50,15 +50,18 @@ ui-chat {
       top: 0px;
       overflow-x: hidden;
       overflow-y: auto;
-      .username{
+      .ui-chat-username{
         margin: 2px 5px;
         padding: 2px 5px;
         cursor: pointer;
         font-weight: bold;
         a{
           color: black;
+          cursor: pointer;
         }
-        a:hover{
+        a:hover,
+        &:hover {
+          cursor: pointer;
           background-color: lightness(blue, 50%);
         }
       }
@@ -70,14 +73,16 @@ ui-chat {
       overflow-x: hidden;
       overflow-y: auto;
       float: left;
-      background-color: yellow;
-      .message-admin{
+      .ui-chat-message{
 
       }
-      .message-user{
+      .ui-chat-message-admin{
 
       }
-      .message-me{
+      .ui-chat-message-user{
+
+      }
+      .ui-chat-message-me{
 
       }
     }

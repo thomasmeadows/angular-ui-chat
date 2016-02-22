@@ -31,13 +31,14 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
       //'left' or 'right'; defaults to right
       usersListSide: 'right',
       users: [arrayOfUsersInChat],
+      user: {userObject}
       defaultUserImage: 'default for no user image'
       messages: [messagesFromUsersInChat]
     };
 
   ```
 
-  6. Each array is an array of objects, the following should be contained in each.
+  6. Each array is an array of objects, the following should be contained in each.  User is an object of the user that is the owner of the chat instance.
 
   ```javascript
 
@@ -52,16 +53,26 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
   ```
 
   ```javascript
-  
+
     var messagesFromUsersInChat = [];
     messagesFromUsersInChat.push({
-      //username or id required
-      username: 'what is displayed, same as above',
-      //or//
-      id: 'unique id, maybe from mongodb.  otherwise you can use a unique user name'
-      //username or id required
+      //the same userobject as listed below.
+      user: {userObject}
+      //the message sent
       message: 'message sent by user'
     });
+
+  ```
+
+  ```javascript
+
+    var userObject = {};
+    userObject = {
+      username: 'what to display',
+      id: 'unique id, maybe from mongodb? this is optional, if its not included the username must be unique'
+      image: 'an image for the user'
+      admin: false // or true if they are a chat admin
+    };
 
   ```
 

@@ -1,5 +1,5 @@
 # 1.0.3
-Chat System Functional
+Chat System Functional 1st version
 
 # 1.0.2
 Init Directive and Controller
