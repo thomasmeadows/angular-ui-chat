@@ -1,7 +1,7 @@
 /* global angular */
 (function (window, document) {
 'use strict';
-  angular.module('uichatngenter', [])
+  angular.module('uichatdeps', [])
   .directive('uiNgEnter', function () {
     return function (scope, element, attrs) {
       element.bind("keydown keypress", function (event) {
@@ -13,8 +13,23 @@
         }
       });
     };
+  })
+  .directive('uiScrollBottom', function ($log) {
+    return {
+      scope: {
+        uiScrollBottom: "="
+      },
+      link: function (scope, element) {
+        scope.$watchCollection('uiScrollBottom', function (newValue) {
+          if (newValue)
+          {
+            element[0].scrollTop = element[0].scrollHeight;
+          }
+        });
+      }
+    };
   });
-  angular.module('ui-chat', ['uichatngenter'])
+  angular.module('ui-chat', ['uichatdeps'])
   .directive('uiChat', function($log){
     return {
       restrict: 'E',
@@ -83,7 +98,7 @@
         '<div class="ui-chat-users"  ng-class="{\'ui-chat-users-left\':chatoptions.usersListSide===\'left\',\'ui-chat-users-right\':chatoptions.usersListSide===\'right\'}">' +
           '<div ng-repeat="user in chatoptions.users"><a class="ui-chat-username">{{user.username}}</a></div>' +
         '</div>' +
-        '<div class="ui-chat-chat">' +
+        '<div class="ui-chat-chat" ui-scroll-bottom="chatoptions.messages">' +
           '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} - <span ng-bind-html="message.message"></span></a></div>' +
         '</div>' +
       '</div>' +
