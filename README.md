@@ -13,21 +13,21 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 ## Feature Roadmap
 
   - [x] Basic functionality (plain text)
-  - [] new user message callback
-  - [] Gravatars
-  - [] Curse Word Filters
-  - [] Admin abilities
-  - [] User Settings
-  - [] Collapsable user name list
-  - [] Private Messages
-  - [] Emoticons
-  - [] Custom User Levels
-  - [] Themes
-  - [] HTML - bold
-  - [] HTML - underline
-  - [] HTML - links
-  - [] HTML - size increase
-  - [] HTML - images
+  - [ ] new user message callback
+  - [ ] Gravatars
+  - [ ] Curse Word Filters
+  - [ ] Admin abilities
+  - [ ] User Settings
+  - [ ] Collapsable user name list
+  - [ ] Private Messages
+  - [ ] Emoticons
+  - [ ] Custom User Levels
+  - [ ] Themes
+  - [ ] HTML - bold
+  - [ ] HTML - underline
+  - [ ] HTML - links
+  - [ ] HTML - size increase
+  - [ ] HTML - images
 
 ## Usage
 
