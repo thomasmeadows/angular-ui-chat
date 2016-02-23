@@ -104,6 +104,7 @@
       '</div>' +
       '<div class="ui-chat-inputArea">' +
         '<input type="text" class="chatInput" ng-model="uiChatMessage" ng-change="uiChatIsTyping(uiChatMessage)" ui-ng-enter="uiChatMessageSent(uiChatMessage)">' +
+        '<a href="http://www.emoji-cheat-sheet.com/" ng-if="chatoptions.emoji" target="_blank"><i class="twa twa-my-emoticon"></i></a>' +
       '</div>'
     };
   })

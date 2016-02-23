@@ -1,3 +1,7 @@
+# 1.0.5
+Auto Scroll New Messages
+Smiley link if emojis enabled
+
 # 1.0.4
 Added twitter emojis
 
