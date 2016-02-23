@@ -13,14 +13,14 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 ## Feature Roadmap
 
   - [x] Basic functionality (plain text)
-  - [ ] new user message callback
+  - [ ] User Message Callback
   - [ ] Gravatars
   - [ ] Curse Word Filters
   - [ ] Admin abilities
   - [ ] User Settings
   - [ ] Collapsable user name list
   - [ ] Private Messages
-  - [ ] Emoticons
+  - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
   - [ ] Custom User Levels
   - [ ] Themes
   - [ ] HTML - bold
@@ -49,6 +49,8 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     $scope.uiChatOptions = {
       //'left' or 'right'; defaults to right
       usersListSide: 'right',
+      //if set to twa, the chat will filter for twemoji awesome
+      emoji: 'twa',
       users: [arrayOfUsersInChat],
       user: {userObject}
       defaultUserImage: 'default for no user image'
@@ -101,7 +103,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style.  Add unit tests for any new or changed functionality. Lint and test your code.
+In lieu of a formal styleguide, take care to maintain the existing coding style.  Add unit tests for any new or changed functionality. Lint and test your code.  To build user grunt browserify.
 
 ## Release History
 

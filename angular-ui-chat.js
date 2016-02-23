@@ -19,6 +19,15 @@
     return {
       restrict: 'E',
       controller: function($log, $scope) {
+        if($scope.chatoptions.emoji === 'twa'){
+          if(require){
+            var emojiArray = require('./emoji.json');
+          }else{
+            throw 'require unavailable you need browserify or a way to import json';
+          }
+
+        }
+
         //$log.debug('ui-chat controller working');
         //set default chatoptions
         if($scope.chatoptions.usersListSide !== 'left' && $scope.chatoptions.usersListSide !== 'right'){
@@ -34,6 +43,30 @@
         };
 
         $scope.uiChatMessageSent = function(message){
+          var convertEmoji = function(message){
+            for (var i = 0; i < emojiArray.length; i++) {
+              if(message.indexOf(emojiArray[i]) > -1){
+                $log.debug('replacing emoji - ' + message);
+                message = message.replace(emojiArray[i], '<i class="twa twa-' + emojiArray[i].replace(':','').replace(':','').replace('_','-').replace('_','-').replace('_','-') + '"></i>');
+                $log.debug('replaced emoji - ' + message);
+                //start over the search if there are still :
+                if($scope.chatoptions.emoji === 'twa' && message.indexOf(':') > -1 && message.lastIndexOf(':') !== message.indexOf(':')){
+                  i = 0;
+                }else{
+                  //exit if there is no : in message
+                  i = emojiArray.length;
+                }
+              }
+            }
+            return message;
+          };
+          //if emoji chat options set to 'twa'
+          //and it has a semicolon
+          //and 2nd semicolon exist
+          if($scope.chatoptions.emoji === 'twa' && message.indexOf(':') > -1 && message.lastIndexOf(':') !== message.indexOf(':')){
+            //call the funciton to convert emojis
+            message = convertEmoji(message);
+          }
           $scope.chatoptions.messages.push({user: $scope.chatoptions.user, message: message});
           $scope.uiChatMessage = null;
         };
@@ -51,7 +84,7 @@
           '<div ng-repeat="user in chatoptions.users"><a class="ui-chat-username">{{user.username}}</a></div>' +
         '</div>' +
         '<div class="ui-chat-chat">' +
-          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} - {{message.message}}</a></div>' +
+          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} - <span ng-bind-html="message.message"></span></a></div>' +
         '</div>' +
       '</div>' +
       '<div class="ui-chat-inputArea">' +

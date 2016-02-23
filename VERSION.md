@@ -1,3 +1,6 @@
+# 1.0.4
+Added twitter emojis
+
 # 1.0.3
 Chat System Functional 1st version
 
