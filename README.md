@@ -1,7 +1,7 @@
 # Angular-UI-Chat
 =========
 
-A small library for making a chatroom.  This addon is purely front-end so how you send data to it be it sockets or standard request is up to you.
+A small library for making a custom chatroom.  This addon is purely front-end so how you send data to it is up to you.
 
 ## Dependencies
   Angular 1.x
@@ -9,6 +9,25 @@ A small library for making a chatroom.  This addon is purely front-end so how yo
 ## Installation
 
   npm install angular-ui-chat --save
+
+## Feature Roadmap
+
+  - [x] Basic functionality (plain text)
+  - [] new user message callback
+  - [] Gravatars
+  - [] Curse Word Filters
+  - [] Admin abilities
+  - [] User Settings
+  - [] Collapsable user name list
+  - [] Private Messages
+  - [] Emoticons
+  - [] Custom User Levels
+  - [] Themes
+  - [] HTML - bold
+  - [] HTML - underline
+  - [] HTML - links
+  - [] HTML - size increase
+  - [] HTML - images
 
 ## Usage
 
