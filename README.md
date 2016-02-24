@@ -14,13 +14,14 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
   - [x] Basic functionality (plain text)
   - [x] User Message Callback
-  - [ ] Gravatars
   - [x] Curse Word Filters
-  - [ ] Admin abilities
+  - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
+  - [ ] Gravatars
+  - [ ] Mobile Friendly
   - [ ] User Settings
+  - [ ] Admin abilities
   - [ ] Collapsable user name list
   - [ ] Private Messages
-  - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
   - [ ] Custom User Levels
   - [ ] Themes
   - [ ] HTML - bold
