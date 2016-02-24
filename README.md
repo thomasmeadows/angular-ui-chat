@@ -13,7 +13,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 ## Feature Roadmap
 
   - [x] Basic functionality (plain text)
-  - [ ] User Message Callback
+  - [x] User Message Callback
   - [ ] Gravatars
   - [ ] Curse Word Filters
   - [ ] Admin abilities
@@ -38,11 +38,11 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
   ```html
 
-    <ui-chat chatoptions="uiChatOptions"></ui-chat>
+    <ui-chat chatoptions="uiChatOptions" chatmessage="messageCallbackFunction" chattyping="isTypingCallbackFunction"></ui-chat>
 
   ```
 
-  5. In your controller create an optionsObject
+  5. In your controller create an optionsObject and a message callback function (DO NOT include parenthesis () in the html!)
 
   ```javascript
 
@@ -55,6 +55,14 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       user: {userObject}
       defaultUserImage: 'default for no user image'
       messages: [messagesFromUsersInChat]
+    };
+
+    $scope.messageCallbackFunction = function(message){
+      //process message here whenever message received
+    };
+
+    $scope.isTypingCallbackFunction = function(lengthOfCharacters){
+      //process is activity here for user is typing...
     };
 
   ```

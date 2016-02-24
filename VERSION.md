@@ -1,4 +1,8 @@
 # 1.0.5
+User Typing Callback
+User Message Callback
+
+# 1.0.5
 Auto Scroll New Messages
 Smiley link on input box if emojis enabled
 

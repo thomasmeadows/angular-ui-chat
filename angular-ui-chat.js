@@ -40,7 +40,6 @@
           }else{
             throw 'require unavailable you need browserify or a way to import json';
           }
-
         }
 
         //$log.debug('ui-chat controller working');
@@ -52,9 +51,10 @@
 
         //ui chat functions
         $scope.uiChatIsTyping = function(message){
-          if(message.length > 3){
+          if(message.length > 1){
             $log.debug($scope.chatoptions.user.username,' is typing a message');
           }
+          $scope.chattyping()(message.length);
         };
 
         $scope.uiChatMessageSent = function(message){
@@ -84,11 +84,15 @@
           }
           $scope.chatoptions.messages.push({user: $scope.chatoptions.user, message: message});
           $scope.uiChatMessage = null;
+          $scope.chatmessage()(message);
         };
+
         //end ui chat functions
       },
       scope: {
-        chatoptions: '='
+        chatoptions: '=',
+        chatmessage: '&',
+        chattyping: '&'
       },
       link: function(scope, ele, attrs, ctrl) {
         scope.chatoptions = scope.$eval(attrs.chatoptions);
