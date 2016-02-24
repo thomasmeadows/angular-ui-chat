@@ -1,6 +1,7 @@
-# 1.0.5
+# 1.0.6
 User Typing Callback
 User Message Callback
+Curse Word Filter
 
 # 1.0.5
 Auto Scroll New Messages

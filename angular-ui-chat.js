@@ -41,6 +41,13 @@
             throw 'require unavailable you need browserify or a way to import json';
           }
         }
+        if($scope.chatoptions.curseFilter){
+          if(require){
+            var curseWordArray = require('./cursewords.json');
+          }else{
+            throw 'require unavailable you need browserify or a way to import json';
+          }
+        }
 
         //$log.debug('ui-chat controller working');
         //set default chatoptions
@@ -58,6 +65,34 @@
         };
 
         $scope.uiChatMessageSent = function(message){
+          //send unaltered message;
+          var newMessage = $scope.chatmessage()(message);
+          if(newMessage){
+            message = newMessage;
+          }
+          //functions used for sedning messages
+          var curseFilter = function(message){
+            var splitWord = message.split(' ');
+            var newMessage = '';
+            var replaceWord = '$|^&!';
+            for (var x = 0; x < splitWord.length; x++) {
+              for (var i = 0; i < curseWordArray.length; i++) {
+                if(splitWord[x] === curseWordArray[i]){
+                  splitWord[x] = replaceWord;
+                }
+              }
+              //if there is another word after this
+              if(splitWord[x+1]){
+                newMessage += splitWord[x] + ' ';
+              //if this is the last word
+              }else{
+                newMessage += splitWord[x];
+              }
+
+            }
+            return newMessage;
+          };
+
           var convertEmoji = function(message){
             for (var i = 0; i < emojiArray.length; i++) {
               if(message.indexOf(emojiArray[i]) > -1){
@@ -75,6 +110,8 @@
             }
             return message;
           };
+          //end functions used for sending Messages
+
           //if emoji chat options set to 'twa'
           //and it has a semicolon
           //and 2nd semicolon exist
@@ -82,19 +119,27 @@
             //call the funciton to convert emojis
             message = convertEmoji(message);
           }
+          //if the curse filter is turned on
+          if($scope.chatoptions.curseFilter){
+            message = curseFilter(message);
+          }
+          //push the message to array
           $scope.chatoptions.messages.push({user: $scope.chatoptions.user, message: message});
+          //reset the input box to null so user can type a new message later
           $scope.uiChatMessage = null;
-          $scope.chatmessage()(message);
+
         };
 
         //end ui chat functions
       },
       scope: {
+        //helps pass in functions and objects to controller
         chatoptions: '=',
         chatmessage: '&',
         chattyping: '&'
       },
       link: function(scope, ele, attrs, ctrl) {
+        //turns the object passed in into an object to be used in controller
         scope.chatoptions = scope.$eval(attrs.chatoptions);
       },
       template:

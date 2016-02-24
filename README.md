@@ -15,7 +15,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] Basic functionality (plain text)
   - [x] User Message Callback
   - [ ] Gravatars
-  - [ ] Curse Word Filters
+  - [x] Curse Word Filters
   - [ ] Admin abilities
   - [ ] User Settings
   - [ ] Collapsable user name list
@@ -51,6 +51,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       usersListSide: 'right',
       //if set to twa, the chat will filter for twemoji awesome
       emoji: 'twa',
+      curseFilter: true,
       users: [arrayOfUsersInChat],
       user: {userObject}
       defaultUserImage: 'default for no user image'
