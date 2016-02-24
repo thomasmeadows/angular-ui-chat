@@ -37,25 +37,31 @@ module.exports = function (grunt) {
     },
     cssmin: {
       main: {
-        src:['./temp/ui-chat.css', './styles/twemoji-awesome.css'],
+        src:['./temp/ui-chat.css'],
         dest:'./dist/angular-ui-chat.min.css'
       }
     },
     clean: {
-      main:{
+      main: {
         src:['dist','temp']
+      }
+    },
+    ngAnnotate: {
+      main: {
+        src:'./temp/angular-ui-chat.browserify.js',
+        dest:'./temp/angular-ui-chat.browserify.js'
       }
     },
     watch: {
       scripts: {
         files: 'angular-ui-chat.js',
-        tasks: ['browserify','uglify'],
+        tasks: ['browserify','ngAnnotate','uglify'],
         options: {
           interrupt: true,
         },
       },
       css: {
-        files: 'styles/ui-chat.less',
+        files: ['./styles/ui-chat.less', './styles/twemoji-awesome.less', './styles/css-speach-bubble.less'],
         tasks: ['less','cssmin'],
         options: {
           interrupt: true,
@@ -63,6 +69,6 @@ module.exports = function (grunt) {
       },
     },
   });
-  grunt.registerTask('dist', ['clean', 'browserify','less','cssmin', 'uglify']);
-  grunt.registerTask('dev', ['clean', 'browserify','less','cssmin','uglify', 'watch']);
+  grunt.registerTask('dist', ['clean', 'browserify','ngAnnotate','less','cssmin', 'uglify']);
+  grunt.registerTask('dev', ['clean', 'browserify','ngAnnotate','less','cssmin','uglify', 'watch']);
 };

@@ -32,8 +32,8 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
 ## Usage
 
-  1. run npm install angular-ui-chat in the cli
-  2. include the js and the less or css file in your project. Alternately copy the less/css file into your folders and create your own stylings
+  1. run npm install angular-ui-chat
+  2. include the .min.js and the .min.css file from the dist/ folder in your project.
   3. Add 'ui-chat' to your angular dependencies
   4. Add to your html
 
@@ -61,6 +61,8 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
     $scope.messageCallbackFunction = function(message){
       //process message here whenever message received
+      //you can also alter the message here and return the change
+      return message;
     };
 
     $scope.isTypingCallbackFunction = function(lengthOfCharacters){
@@ -69,17 +71,12 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
   ```
 
-  6. Each array is an array of objects, the following should be contained in each.  User is an object of the user that is the owner of the chat instance.
+  6. Each array is an array of objects, the following should be contained in each.  User is an object of the user that is the owner of the chat instance.  For security reasons it is not recommended to include user email addresses in calls related to chat functionality, this would leave anyone in the live chat open to having their emails scraped by a bot.
 
   ```javascript
 
-    var arrayOfUsersInChat = [];
-    arrayOfUsersInChat.push({
-      username: 'what to display',
-      id: 'unique id, maybe from mongodb? this is optional, if its not included the username must be unique'
-      image: 'an image for the user'
-      admin: false // or true if they are a chat admin
-    });
+    var arrayOfUsersInChat = [userObject, userObject];
+    arrayOfUsersInChat.push(userObject);
 
   ```
 
@@ -100,8 +97,10 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     var userObject = {};
     userObject = {
       username: 'what to display',
-      id: 'unique id, maybe from mongodb? this is optional, if its not included the username must be unique'
+      id: 'unique id(optional)'
+      //if id is not included, the username must be unique
       image: 'an image for the user'
+      //if you want to use gravatar you should generate the links server side and pass it into this image field
       admin: false // or true if they are a chat admin
     };
 

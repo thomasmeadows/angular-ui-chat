@@ -1,6 +1,6 @@
 {
   "name": "angular-ui-chat",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Angular UI Customizible chatroom that lets you determine how to store and retrieve data",
   "main": "index.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "grunt-contrib-less": "^1.2.0",
     "grunt-contrib-uglify": "^0.11.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-ng-annotate": "^1.0.1",
     "load-grunt-tasks": "^3.4.0",
     "mocha": "^2.4.5"
   }

@@ -159,7 +159,7 @@
           '<div ng-repeat="user in chatoptions.users"><a class="ui-chat-username">{{user.username}}</a></div>' +
         '</div>' +
         '<div class="ui-chat-chat" ui-scroll-bottom="chatoptions.messages">' +
-          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} - <span ng-bind-html="message.message"></span></a></div>' +
+          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} <span class="triangle-border left" ng-bind-html="message.message"></span></a></div>' +
         '</div>' +
       '</div>' +
       '<div class="ui-chat-inputArea">' +

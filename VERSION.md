@@ -1,4 +1,4 @@
-# 1.0.7
+# 1.1.0
 Mobile Friendly @Media in css
 Reorganized files in directory structure
 
