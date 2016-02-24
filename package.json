@@ -1,6 +1,6 @@
 {
   "name": "angular-ui-chat",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Angular UI Customizible chatroom that lets you determine how to store and retrieve data",
   "main": "index.js",
   "scripts": {
@@ -30,10 +30,16 @@
   "homepage": "https://github.com/thomasmeadows/angular-ui-chat",
   "devDependencies": {
     "angular": ">1.2.6",
+    "blueimp-md5": "^2.2.0",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
     "load-grunt-tasks": "^3.4.0",
     "mocha": "^2.4.5"
   }

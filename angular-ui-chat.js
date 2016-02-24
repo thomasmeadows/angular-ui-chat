@@ -61,14 +61,25 @@
           if(message.length > 1){
             $log.debug($scope.chatoptions.user.username,' is typing a message');
           }
-          $scope.chattyping()(message.length);
+          if($scope.chattyping){
+            $scope.chattyping()(message.length);
+          }else{
+            $log.info('ui.chat chattyping is not defined in html');
+            return;
+          }
+
         };
 
         $scope.uiChatMessageSent = function(message){
           //send unaltered message;
-          var newMessage = $scope.chatmessage()(message);
-          if(newMessage){
-            message = newMessage;
+          if($scope.chatmessage()){
+            var newMessage = $scope.chatmessage()(message);
+            if(newMessage){
+              message = newMessage;
+            }
+          }else{
+            $log.info('ui.chat chatmessage is not defined in html');
+            return;
           }
           //functions used for sedning messages
           var curseFilter = function(message){

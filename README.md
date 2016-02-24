@@ -16,8 +16,8 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] User Message Callback
   - [x] Curse Word Filters
   - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
+  - [x] Mobile Friendly
   - [ ] Gravatars
-  - [ ] Mobile Friendly
   - [ ] User Settings
   - [ ] Admin abilities
   - [ ] Collapsable user name list
@@ -113,7 +113,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style.  Add unit tests for any new or changed functionality. Lint and test your code.  To build user grunt browserify.
+In lieu of a formal styleguide, take care to maintain the existing coding style.  Lint and test your code.  To build use grunt dist. To develop use grunt dev.  Use a different branch and send a pull request to contribute.
 
 ## Release History
 

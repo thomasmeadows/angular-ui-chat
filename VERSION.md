@@ -1,3 +1,7 @@
+# 1.0.7
+Mobile Friendly @Media in css
+Reorganized files in directory structure
+
 # 1.0.6
 User Typing Callback
 User Message Callback
