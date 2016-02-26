@@ -61,7 +61,7 @@ module.exports = function (grunt) {
         },
       },
       css: {
-        files: ['./styles/ui-chat.less', './styles/twemoji-awesome.less', './styles/css-speach-bubble.less'],
+        files: ['./styles/ui-chat.less', './styles/twemoji-awesome.less'],
         tasks: ['less','cssmin'],
         options: {
           interrupt: true,

@@ -17,7 +17,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] Curse Word Filters
   - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
   - [x] Mobile Friendly
-  - [ ] Gravatars
+  - [x] User Images
   - [ ] User Settings
   - [ ] Admin abilities
   - [ ] Collapsable user name list
@@ -101,7 +101,9 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       //if id is not included, the username must be unique
       image: 'an image for the user'
       //if you want to use gravatar you should generate the links server side and pass it into this image field
-      admin: false // or true if they are a chat admin
+      admin: false // or true if they are a chat admin,
+      //use left or right to display which side the users image should be on
+      side: 'left'
     };
 
   ```

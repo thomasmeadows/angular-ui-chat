@@ -1,4 +1,3 @@
-@import "./css-speach-bubble.less";
 @import "./twemoji-awesome.less";
 
 ui-chat {
@@ -36,7 +35,6 @@ ui-chat {
     left: 0px;
     border-left: 0px;
     border-right: 0px;
-
     .ui-chat-users-left {
       float: left;
       border: 0px solid black;
@@ -94,17 +92,107 @@ ui-chat {
         height: 65%;
       }
       .ui-chat-message{
-        padding: 20px;
+        padding: 1em;
         width: 100%;
-      }
-      .ui-chat-message-admin{
+        .ui-chat-message-user-image{
+          height: 50px;
+          width: 50px;
+          margin: 10px;
+        }
+        .ui-chat-message-user-image.left{
+          float: left;
+        }
+        .ui-chat-message-user-image.right{
+          float: right;
+        }
+        .round-border {
+          position:relative;
+          padding:15px;
+          border:1px solid black;
+          color:#333;
+          background:#fff;
+          /* css3 */
+          -webkit-border-radius:10px;
+          -moz-border-radius:10px;
+          border-radius:10px;
+        }
+        .triangle-border {
+          position:relative;
+          padding:15px;
+          border:1px solid blue;
+          color:#333;
+          background:#fff;
+          /* css3 */
+          -webkit-border-radius:10px;
+          -moz-border-radius:10px;
+          border-radius:10px;
+        }
+        .triangle-border.left {
+          margin-left:80px;
+        }
+        .triangle-border.right {
+          margin-right:80px;
+        }
+        .triangle-border:before {
+          content:"";
+          position:absolute;
+          bottom:-20px; /* value = - border-top-width - border-bottom-width */
+          left:40px; /* controls horizontal position */
+          border-width:20px 20px 0;
+          border-style:solid;
+          border-color:blue transparent;
+          /* reduce the damage in FF3.0 */
+          display:block;
+          width:0;
+        }
+        .triangle-border:after {
+          content:"";
+          position:absolute;
+          bottom:-13px; /* value = - border-top-width - border-bottom-width */
+          left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+          border-width:13px 13px 0;
+          border-style:solid;
+          border-color:#fff transparent;
+          /* reduce the damage in FF3.0 */
+          display:block;
+          width:0;
+        }
+        .triangle-border.left:before {
+          top: 15px; /* controls vertical position */
+          bottom: auto;
+          left: -22px; /* value = - border-left-width - border-right-width */
+          border-width: 10px 22px 10px 0;
+          border-color: transparent blue;
+        }
+        .triangle-border.left:after {
+          top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+          bottom:auto;
+          left:-21px; /* value = - border-left-width - border-right-width */
+          border-width:9px 21px 9px 0;
+          border-color:transparent #fff;
+        }
+        .triangle-border.right:before {
+          top:15px; /* controls vertical position */
+          bottom:auto;
+          left:auto;
+          right:-22px; /* value = - border-left-width - border-right-width */
+          border-width:10px 0 10px 22px;
+          border-color:transparent blue;
+        }
+        .triangle-border.right:after {
+          top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+          bottom:auto;
+          left:auto;
+          right:-21px; /* value = - border-left-width - border-right-width */
+          border-width:9px 0 9px 21px;
+          border-color:transparent #fff;
+        }
+        .ui-chat-message-inner-username{
+          font-weight: bold;
+        }
+        .ui-chat-message-inner-message{
 
-      }
-      .ui-chat-message-user{
-
-      }
-      .ui-chat-message-me{
-
+        }
       }
     }
   }

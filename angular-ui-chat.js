@@ -159,7 +159,21 @@
           '<div ng-repeat="user in chatoptions.users"><a class="ui-chat-username">{{user.username}}</a></div>' +
         '</div>' +
         '<div class="ui-chat-chat" ui-scroll-bottom="chatoptions.messages">' +
-          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">{{message.user.username}} <span class="triangle-border left" ng-bind-html="message.message"></span></a></div>' +
+          '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">' +
+            '<div ng-show="message.user.image">' +
+              '<img class="ui-chat-message-user-image" src="{{message.user.image}}" ng-class="{left: (message.user.side === \'left\' || !message.user.side), right:  message.user.side === \'right\'}">' +
+              '<div class="triangle-border" ng-class="{left: (message.user.side === \'left\' || !message.user.side), right:  message.user.side === \'right\'}">' +
+                '<div class="ui-chat-message-inner-username">{{message.user.username}}</div>'+
+                '<div class="ui-chat-message-inner" ng-bind-html="message.message"></div>'+
+              '</div>' +
+            '</div>' +
+            '<div ng-hide="message.user.image">' +
+              '<div class="round-border">'+
+                '<div class="ui-chat-message-inner-username">{{message.user.username}}</div>'+
+                '<div class="ui-chat-message-inner" ng-bind-html="message.message"></div>'+
+              '</div>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
       '</div>' +
       '<div class="ui-chat-inputArea">' +
