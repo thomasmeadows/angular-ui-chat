@@ -18,10 +18,10 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] [Emoticons](http://www.emoji-cheat-sheet.com/)
   - [x] Mobile Friendly
   - [x] User Images
+  - [x] Collapsable user name list
+  - [x] Private Messages
   - [ ] User Settings
   - [ ] Admin abilities
-  - [ ] Collapsable user name list
-  - [ ] Private Messages
   - [ ] Custom User Levels
   - [ ] Themes
   - [ ] HTML - bold
@@ -39,7 +39,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
   ```html
 
-    <ui-chat chatoptions="uiChatOptions" chatmessage="messageCallbackFunction" chattyping="isTypingCallbackFunction"></ui-chat>
+    <ui-chat chatoptions="uiChatOptions" chatmessage="messageCallbackFunction" chattyping="isTypingCallbackFunction" chatprivatemessage="chatPrivateMessageCallbackFunction"></ui-chat>
 
   ```
 
@@ -69,6 +69,10 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       //process is activity here for user is typing...
     };
 
+    $scope.chatPrivateMessageCallbackFunction = function(message, userObject){
+      //process is activity here for user is typing...
+    };
+
   ```
 
   6. Each array is an array of objects, the following should be contained in each.  User is an object of the user that is the owner of the chat instance.  For security reasons it is not recommended to include user email addresses in calls related to chat functionality, this would leave anyone in the live chat open to having their emails scraped by a bot.
@@ -87,7 +91,16 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       //the same userobject as listed below.
       user: {userObject}
       //the message sent
-      message: 'message sent by user'
+      message: 'message sent by user',
+      //if it is a private message
+      private: {
+        //who our client is having a conversation with
+        user: userObject,
+        //if the message is from the client to private user
+        from: true,
+        //if the message is to the client from private user
+        to: true,
+      },
     });
 
   ```
@@ -115,6 +128,9 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.  Lint and test your code.  To build use grunt dist. To develop use grunt dev.  Use a different branch and send a pull request to contribute.
+
+## About
+  This project is sponsered by [ITProTV](http://www.itpro.tv/)
 
 ## Release History
 

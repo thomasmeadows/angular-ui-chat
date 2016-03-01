@@ -5,7 +5,6 @@ ui-chat {
   width: 100%;
   height: 500px;
   display: inline-block;
-  border: 1px solid black;
 
   ::-webkit-scrollbar {
       width: 12px;
@@ -33,23 +32,34 @@ ui-chat {
     height: 90%;
     top: 0px;
     left: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    .ui-chat-users-left {
+    border: 1px solid black;
+    border-bottom: 0px;
+    .ui-chat-users.left {
       float: left;
-      border: 0px solid black;
-      border-right: 1px solid;
+      border-right: 1px solid black;
     }
-    .ui-chat-users-right {
+    .ui-chat-users.right {
       float: right;
-      border: 0px solid black;
-      border-left: 1px solid;
-      border-bottom: 0px solid;
+      border-left: 1px solid black;
+    }
+    .ui-chat-users.collapsed {
+      visibility: hidden;
+      width: 0%;
+      height: 0%;
+      border-left: 0px;
+      -webkit-transition-duration: 0.5s; /* Safari */
+      -webkit-transition-timing-function: ease-in-out;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
     }
     .ui-chat-users{
       width: 20%;
       height: 100%;
       top: 0px;
+      -webkit-transition-duration: 0.5s; /* Safari */
+      -webkit-transition-timing-function: ease-in-out;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
       overflow-x: hidden;
       overflow-y: auto;
       @media only screen and (min-width: 768px) and (max-width: 950px) {
@@ -59,7 +69,8 @@ ui-chat {
         width: 100%;
         height: 35%;
         border-bottom: 1px solid;
-        border-left: 0px solid;
+        border-left: 0px !important;
+        border-right: 0px !important;
       }
       .ui-chat-username{
         margin: 2px 5px;
@@ -77,6 +88,14 @@ ui-chat {
         }
       }
     }
+    .ui-chat-chat.collapsed {
+      width: 100%;
+      height: 100%;
+      -webkit-transition-duration: 0.5s; /* Safari */
+      -webkit-transition-timing-function: ease-in-out;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+    }
     .ui-chat-chat {
       width: 80%;
       height: 100%;
@@ -84,6 +103,10 @@ ui-chat {
       overflow-x: hidden;
       overflow-y: auto;
       float: left;
+      -webkit-transition-duration: 0.5s; /* Safari */
+      -webkit-transition-timing-function: ease-in-out;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
       @media only screen and (min-width: 768px) and (max-width: 950px) {
         width: 70%;
       }
@@ -105,7 +128,7 @@ ui-chat {
         .ui-chat-message-user-image.right{
           float: right;
         }
-        .round-border {
+        .ui-chat-message-outer {
           position:relative;
           padding:15px;
           border:1px solid black;
@@ -115,80 +138,66 @@ ui-chat {
           -webkit-border-radius:10px;
           -moz-border-radius:10px;
           border-radius:10px;
+          .triangle-left{
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 22px 10px 0;
+            border-color: transparent black transparent transparent;
+            display: inline-block;
+            float: left;
+            margin-left: -35px;
+            margin-top: 10px;
+          }
+          .triangle-left:after{
+            content:"";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width:9px 21px 9px 0;
+            border-color: transparent white transparent transparent;
+            display: inline-block;
+            float: left;
+            margin-top: -9px; // the inverse of what is above margin top
+            margin-left: 1px;
+          }
+          .triangle-right{
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 22px;
+            border-color: transparent transparent transparent black;
+            display: inline-block;
+            float: right;
+            margin-right: -35px;
+            margin-top: 10px;
+          }
+          .triangle-right:after{
+            content:"";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 9px 0 9px 21px;
+            border-color: transparent transparent transparent white;
+            display: inline-block;
+            float: right;
+            margin-top: -9px; // the inverse of what is above margin top
+            margin-right: 1px;
+          }
         }
-        .triangle-border {
-          position:relative;
-          padding:15px;
-          border:1px solid blue;
-          color:#333;
-          background:#fff;
-          /* css3 */
-          -webkit-border-radius:10px;
-          -moz-border-radius:10px;
-          border-radius:10px;
+        .ui-chat-message-outer.left {
+          margin-left:100px;
         }
-        .triangle-border.left {
-          margin-left:80px;
+        .ui-chat-message-outer.right {
+          margin-right:100px;
         }
-        .triangle-border.right {
-          margin-right:80px;
-        }
-        .triangle-border:before {
-          content:"";
-          position:absolute;
-          bottom:-20px; /* value = - border-top-width - border-bottom-width */
-          left:40px; /* controls horizontal position */
-          border-width:20px 20px 0;
-          border-style:solid;
-          border-color:blue transparent;
-          /* reduce the damage in FF3.0 */
-          display:block;
-          width:0;
-        }
-        .triangle-border:after {
-          content:"";
-          position:absolute;
-          bottom:-13px; /* value = - border-top-width - border-bottom-width */
-          left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
-          border-width:13px 13px 0;
-          border-style:solid;
-          border-color:#fff transparent;
-          /* reduce the damage in FF3.0 */
-          display:block;
-          width:0;
-        }
-        .triangle-border.left:before {
-          top: 15px; /* controls vertical position */
-          bottom: auto;
-          left: -22px; /* value = - border-left-width - border-right-width */
-          border-width: 10px 22px 10px 0;
-          border-color: transparent blue;
-        }
-        .triangle-border.left:after {
-          top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-          bottom:auto;
-          left:-21px; /* value = - border-left-width - border-right-width */
-          border-width:9px 21px 9px 0;
-          border-color:transparent #fff;
-        }
-        .triangle-border.right:before {
-          top:15px; /* controls vertical position */
-          bottom:auto;
-          left:auto;
-          right:-22px; /* value = - border-left-width - border-right-width */
-          border-width:10px 0 10px 22px;
-          border-color:transparent blue;
-        }
-        .triangle-border.right:after {
-          top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-          bottom:auto;
-          left:auto;
-          right:-21px; /* value = - border-left-width - border-right-width */
-          border-width:9px 0 9px 21px;
-          border-color:transparent #fff;
+        .ui-chat-message-outer.both {
+          margin-left:100px;
+          margin-right:100px;
         }
         .ui-chat-message-inner-username{
           font-weight: bold;
+          cursor: pointer;
         }
         .ui-chat-message-inner-message{
 
@@ -203,19 +212,21 @@ ui-chat {
     min-height: 50px;
     bottom: 0px;
     display: inline-block;
-    border: 0px solid black;
-    border-top: 1px solid;
-    border-: 1px solid;
     .chatInput {
+      .ui-chat-input-pm-username{
+        background-color: rgba(0, 0, 255, 0.1);
+        border: 1px solid black;
+        padding: 3px;
+        margin-right: 3px;
+      }
       width: 100%;
-      height: 100%;
       min-height: 50px;
       font-size: 125%;
       font-weight: bold;
       padding: 10px;
       background-color: #fff;
       background-image: none;
-      border: 1px solid #ccc;
+      border: 1px solid black;
       border-radius: 1px;
       box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
       transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -233,5 +244,97 @@ ui-chat {
     margin: 0 0.0665em 0 0.133em;
     vertical-align: -0.133em;
     background-size: 1.33em 1.33em;
+  }
+  .collapse-button{
+    background-color: rgba(220, 220, 220, 0.50);
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    &:hover{
+      background-color: rgba(220, 220, 220, 1);
+      -webkit-transition-duration: 0.5s; /* Safari */
+      transition-duration: 0.5s;
+    }
+    position: absolute;
+    right: 30px;
+    margin-top: -30px;
+    padding: 4px 6px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .collapse-button-inner:before{
+    @media only screen and (min-width: 768px) {
+      font-weight: bold;
+      content: '>';
+      -webkit-transition-duration: 0s; /* Safari */
+      transition-duration: 0s;
+    }
+    @media only screen and (max-width: 767px) {
+      font-weight: bold;
+      content: '/\\';
+      -webkit-transition-duration: 0s; /* Safari */
+      transition-duration: 0s;
+    }
+  }
+  .uncollapse-button{
+    background-color: rgba(220, 220, 220, 0.50);
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    &:hover{
+      background-color: rgba(220, 220, 220, 1);
+      -webkit-transition-duration: 0.5s; /* Safari */
+      transition-duration: 0.5s;
+    }
+    position: absolute;
+    right: 30px;
+    margin-top: -30px;
+    padding: 4px 6px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .uncollapse-button-inner:before{
+    @media only screen and (min-width: 768px) {
+      font-weight: bold;
+      content: '<';
+      -webkit-transition-duration: 0s; /* Safari */
+      transition-duration: 0s;
+    }
+    @media only screen and (max-width: 767px) {
+      font-weight: bold;
+      content: '\\/';
+      -webkit-transition-duration: 0s; /* Safari */
+      transition-duration: 0s;
+    }
   }
 }

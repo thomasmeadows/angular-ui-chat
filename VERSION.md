@@ -1,3 +1,7 @@
+# 1.1.1
+Private Messages
+Collapsable User Name List
+
 # 1.1.0
 Mobile Friendly @Media in css
 Reorganized files in directory structure
