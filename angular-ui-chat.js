@@ -177,10 +177,16 @@
             message = curseFilter(message);
           }
           //push the message to array
-          $scope.chatoptions.messages.push({user: $scope.chatoptions.user, message: message, private: privateObject});
+          $scope.chatoptions.messages.push({user: $scope.chatoptions.user, message: message, private: privateObject, time: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()});
           //reset the input box to null so user can type a new message later
           $scope.uiChatMessage = null;
 
+        };
+        $scope.deleteMessageClicked = function(messageObject, index){
+          if($scope.chatmessagedelete()){
+            $scope.chatmessagedelete()(messageObject);
+          }
+          $scope.chatoptions.messages.splice(index, 1);
         };
 
         $scope.usernameClicked = function(userObject){
@@ -204,6 +210,7 @@
         chatoptions: '=',
         chatmessage: '&',
         chattyping: '&',
+        chatmessagedelete: '&',
         chatprivatemessage: '&',
       },
       link: function(scope, ele, attrs, ctrl) {
@@ -223,23 +230,35 @@
               '<div class="ui-chat-message-outer"  ng-class="{left: (message.user.side === \'left\' || !message.user.side || message.private), right:  message.user.side === \'right\' || message.private}">' +
                 '<div class="triangle-left" ng-show="message.user.side === \'left\' || message.private"></div>' +
                 '<div class="triangle-right" ng-show="message.user.side === \'right\' || message.private"></div>' +
-                '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.user)">{{message.user.username}}</a>'+
-                '<span ng-if="message.private.user.username">'+
+                '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.user)">{{message.user.username}}</a>' +
+                '<span class="ui-chat-message-time" ng-show="message.time">' +
+                  '{{message.time}}'+
+                '</span>' +
+                '<span ng-if="message.private.user.username">' +
                   '<span ng-show="message.private.to"> &nbsp;&lt;&nbsp;</span>' +
                   '<span ng-show="message.private.from">&nbsp;&gt;&nbsp;</span>' +
-                  '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.private.user)">{{message.private.user.username}}</a>'+
+                  '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.private.user)">{{message.private.user.username}}</a>' +
                 '</span>' +
                 '<div class="ui-chat-message-inner" ng-bind-html="message.message"></div>'+
+                '<button class="delete-button" ng-show="chatoptions.user.admin" ng-click="deleteMessageClicked(message, $index)">' +
+                  'delete'+
+                '</button>' +
               '</div>' +
             '</div>' +
             '<div ng-hide="message.user.image">' +
-              '<div class="round-border">'+
-                '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.user)">{{message.user.username}}</a>'+
-                '<span ng-if="message.private.user.username">'+
+              '<div class="ui-chat-message-outer">' +
+                '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.user)">{{message.user.username}}</a>' +
+                '<span class="ui-chat-message-time" ng-show="message.time">' +
+                  '{{message.time}}'+
+                '</span>' +
+                '<span ng-if="message.private.user.username">' +
                   '<span ng-show="message.private.to">&nbsp;&lt;&nbsp;</span>' +
                   '<span ng-show="message.private.from">&nbsp;&gt;&nbsp;</span>' +
-                  '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.private.user)">{{message.private.user.username}}</a>'+
+                  '<a class="ui-chat-message-inner-username"    ng-click="usernameClicked(message.private.user)">{{message.private.user.username}}</a>' +
                 '</span>' +
+                '<button class="delete-button" ng-show="chatoptions.user.admin" ng-click="deleteMessageClicked(message, $index)">' +
+                  'delete'+
+                '</button>' +
                 '<div class="ui-chat-message-inner" ng-bind-html="message.message"></div>'+
               '</div>' +
             '</div>' +
@@ -251,6 +270,9 @@
       '<div class="ui-chat-inputArea">' +
         '<div contenteditable="true" class="chatInput" ng-model="uiChatMessage" ng-change="uiChatIsTyping(uiChatMessage)" ui-ng-enter="uiChatMessageSent(uiChatMessage)"></div>' +
         '<a href="http://www.emoji-cheat-sheet.com/" ng-if="chatoptions.emoji" target="_blank"><i class="twa twa-my-emoticon"></i></a>' +
+      '</div>' +
+      '<div class="ui-chat-feedback" ng-show="chatoptions.userFeedback.message">' +
+        '{{chatoptions.userFeedback.message}}' +
       '</div>'
     };
   })

@@ -138,6 +138,10 @@ ui-chat {
           -webkit-border-radius:10px;
           -moz-border-radius:10px;
           border-radius:10px;
+          .ui-chat-message-time{
+            float: right;
+            margin: 5px;
+          }
           .triangle-left{
             width: 0;
             height: 0;
@@ -206,6 +210,16 @@ ui-chat {
     }
   }
 
+  .ui-chat-feedback{
+    width: 100%;
+    padding: 2px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-top: 0px;
+    background-color: white;
+    display: table;
+  }
+
   .ui-chat-inputArea {
     width: 100%;
     height: 10%;
@@ -244,6 +258,37 @@ ui-chat {
     margin: 0 0.0665em 0 0.133em;
     vertical-align: -0.133em;
     background-size: 1.33em 1.33em;
+  }
+  .delete-button{
+    background-color: rgba(255, 0, 0, 0.5);
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    &:hover{
+      background-color: rgba(255, 0, 0, 1);
+      -webkit-transition-duration: 0.5s; /* Safari */
+      transition-duration: 0.5s;
+    }
+    float: right;
+    margin-top: -15px;
+    padding: 2px 3px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   .collapse-button{
     background-color: rgba(220, 220, 220, 0.50);

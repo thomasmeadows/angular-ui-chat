@@ -1,3 +1,10 @@
+# 1.1.2
+Copy paste fail fix in readme
+Added ability for admins to remove messages
+Added ability to add message time
+Removed default user image field in readme
+Added ability to add user message feedback
+
 # 1.1.1
 Private Messages
 Collapsable User Name List

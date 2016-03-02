@@ -20,8 +20,8 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] User Images
   - [x] Collapsable user name list
   - [x] Private Messages
+  - [x] Admin abilities
   - [ ] User Settings
-  - [ ] Admin abilities
   - [ ] Custom User Levels
   - [ ] Themes
   - [ ] HTML - bold
@@ -39,7 +39,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
 
   ```html
 
-    <ui-chat chatoptions="uiChatOptions" chatmessage="messageCallbackFunction" chattyping="isTypingCallbackFunction" chatprivatemessage="chatPrivateMessageCallbackFunction"></ui-chat>
+    <ui-chat chatoptions="uiChatOptions" chatmessage="messageCallbackFunction" chattyping="isTypingCallbackFunction" chatprivatemessage="chatPrivateMessageCallbackFunction" chatmessagedelete="messageDeleteCallbackFunction"></ui-chat>
 
   ```
 
@@ -54,8 +54,10 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       emoji: 'twa',
       curseFilter: true,
       users: [arrayOfUsersInChat],
-      user: {userObject}
-      defaultUserImage: 'default for no user image'
+      user: {userObject},
+      userFeedback: {
+        message: 'soandso is typing a message',
+      },
       messages: [messagesFromUsersInChat]
     };
 
@@ -70,7 +72,13 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     };
 
     $scope.chatPrivateMessageCallbackFunction = function(message, userObject){
-      //process is activity here for user is typing...
+      //process message here whenever a private message is sent from the client user
+      //you can also alter the message here and return the change
+      return message;
+    };
+
+    $scope.messageDeleteCallbackFunction = function(messageObject){
+      //call for when an admin wants to delete a message
     };
 
   ```
@@ -89,9 +97,12 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     var messagesFromUsersInChat = [];
     messagesFromUsersInChat.push({
       //the same userobject as listed below.
-      user: {userObject}
+      user: {userObject},
       //the message sent
       message: 'message sent by user',
+      id: 'unique id(optional)',
+      //time of the messages
+      time: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
       //if it is a private message
       private: {
         //who our client is having a conversation with
@@ -110,11 +121,10 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     var userObject = {};
     userObject = {
       username: 'what to display',
-      id: 'unique id(optional)'
-      //if id is not included, the username must be unique
-      image: 'an image for the user'
+      id: 'unique id(optional)',
+      image: 'an image for the user',
       //if you want to use gravatar you should generate the links server side and pass it into this image field
-      admin: false // or true if they are a chat admin,
+      admin: false, // or true if they are a chat admin,
       //use left or right to display which side the users image should be on
       side: 'left'
     };
