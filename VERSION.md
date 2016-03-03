@@ -1,3 +1,10 @@
+# 1.2.0
+Changed return message to return message object
+Changed the name of several css elements
+Added default curse word replacer
+Live parse of emoji
+Live perse of pm and mention
+
 # 1.1.2
 Copy paste fail fix in readme
 Added ability for admins to remove messages

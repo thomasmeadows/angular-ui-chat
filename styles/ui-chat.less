@@ -227,6 +227,15 @@ ui-chat {
     bottom: 0px;
     display: inline-block;
     .chatInput {
+      .ui-chat-emoji-insert{
+
+      }
+      .ui-chat-input-mention{
+        background-color: rgba(0, 255, 0, 0.1);
+        border: 1px solid black;
+        padding: 3px;
+        margin-right: 3px;
+      }
       .ui-chat-input-pm-username{
         background-color: rgba(0, 0, 255, 0.1);
         border: 1px solid black;
@@ -246,7 +255,7 @@ ui-chat {
       transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
   }
-  .twa-my-emoticon{
+  .ui-chat-emoticon{
     position: absolute;
     right: 15px;
     bottom: 10px;
@@ -259,7 +268,7 @@ ui-chat {
     vertical-align: -0.133em;
     background-size: 1.33em 1.33em;
   }
-  .delete-button{
+  .ui-chat-delete-button{
     background-color: rgba(255, 0, 0, 0.5);
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
@@ -290,7 +299,7 @@ ui-chat {
     -ms-user-select: none;
     user-select: none;
   }
-  .collapse-button{
+  .ui-chat-collapse-button{
     background-color: rgba(220, 220, 220, 0.50);
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
@@ -321,22 +330,22 @@ ui-chat {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .collapse-button-inner:before{
-    @media only screen and (min-width: 768px) {
-      font-weight: bold;
-      content: '>';
-      -webkit-transition-duration: 0s; /* Safari */
-      transition-duration: 0s;
+    .ui-chat-collapse-button-inner{
+      @media only screen and (min-width: 768px) {
+        font-weight: bold;
+        content: '>';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+      @media only screen and (max-width: 767px) {
+        font-weight: bold;
+        content: '/\\';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
     }
-    @media only screen and (max-width: 767px) {
-      font-weight: bold;
-      content: '/\\';
-      -webkit-transition-duration: 0s; /* Safari */
-      transition-duration: 0s;
-    }
   }
-  .uncollapse-button{
+  .ui-chat-uncollapse-button{
     background-color: rgba(220, 220, 220, 0.50);
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
@@ -367,19 +376,19 @@ ui-chat {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .uncollapse-button-inner:before{
-    @media only screen and (min-width: 768px) {
-      font-weight: bold;
-      content: '<';
-      -webkit-transition-duration: 0s; /* Safari */
-      transition-duration: 0s;
-    }
-    @media only screen and (max-width: 767px) {
-      font-weight: bold;
-      content: '\\/';
-      -webkit-transition-duration: 0s; /* Safari */
-      transition-duration: 0s;
+    .ui-chat-uncollapse-button-inner{
+      @media only screen and (min-width: 768px) {
+        font-weight: bold;
+        content: '<';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+      @media only screen and (max-width: 767px) {
+        font-weight: bold;
+        content: '\\/';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
     }
   }
 }

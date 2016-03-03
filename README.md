@@ -21,6 +21,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] Collapsable user name list
   - [x] Private Messages
   - [x] Admin abilities
+  - [x] AutoParse Emoticons/PM/Mention
   - [ ] User Settings
   - [ ] Custom User Levels
   - [ ] Themes
@@ -50,9 +51,15 @@ A small library for making a custom chatroom.  This addon is purely front-end so
     $scope.uiChatOptions = {
       //'left' or 'right'; defaults to right
       usersListSide: 'right',
-      //if set to twa, the chat will filter for twemoji awesome
+      //if set to twa, the cha t will filter for twemoji awesome
       emoji: 'twa',
       curseFilter: true,
+      //start this will filter items in the input box
+      mentionParse: true,
+      emojiParse: true,
+      pmParse: true,
+      //end input box filters
+      defaultCurseReplacer: '$|^&!',
       users: [arrayOfUsersInChat],
       user: {userObject},
       userFeedback: {
@@ -61,20 +68,20 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       messages: [messagesFromUsersInChat]
     };
 
-    $scope.messageCallbackFunction = function(message){
+    $scope.messageCallbackFunction = function(messageObject){
       //process message here whenever message received
       //you can also alter the message here and return the change
-      return message;
+      return messageObject;
     };
 
     $scope.isTypingCallbackFunction = function(lengthOfCharacters){
       //process is activity here for user is typing...
     };
 
-    $scope.chatPrivateMessageCallbackFunction = function(message, userObject){
+    $scope.chatPrivateMessageCallbackFunction = function(messageObject, userObject){
       //process message here whenever a private message is sent from the client user
       //you can also alter the message here and return the change
-      return message;
+      return messageObject;
     };
 
     $scope.messageDeleteCallbackFunction = function(messageObject){
