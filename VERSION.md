@@ -1,3 +1,9 @@
+# 1.2.1
+Added space after mention auto parse
+Added class for parsed emojis
+Collapse Button now changes side with user list
+Added user image in user list
+
 # 1.2.0
 Changed return message to return message object
 Changed the name of several css elements

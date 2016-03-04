@@ -21,7 +21,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] Collapsable user name list
   - [x] Private Messages
   - [x] Admin abilities
-  - [x] AutoParse Emoticons/PM/Mention
+  - [x] Parse on key up Emoticons/PM/Mention
   - [ ] User Settings
   - [ ] Custom User Levels
   - [ ] Themes
@@ -54,7 +54,7 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       //if set to twa, the cha t will filter for twemoji awesome
       emoji: 'twa',
       curseFilter: true,
-      //start this will filter items in the input box
+      //start this will parse items in the input box on key up
       mentionParse: true,
       emojiParse: true,
       pmParse: true,

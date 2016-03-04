@@ -72,19 +72,26 @@ ui-chat {
         border-left: 0px !important;
         border-right: 0px !important;
       }
-      .ui-chat-username{
-        margin: 2px 5px;
-        padding: 2px 5px;
-        cursor: pointer;
-        font-weight: bold;
-        a{
-          color: black;
-          cursor: pointer;
+      .ui-chat-user{
+        margin: 0.2em;
+        .ui-chat-userimage{
+          height: 1em;
+          width: 1em;
+          margin-right: 0.2em;
         }
-        a:hover,
-        &:hover {
+        .ui-chat-username{
+          font-size: 1em;
           cursor: pointer;
-          background-color: lightness(blue, 50%);
+          font-weight: bold;
+          a{
+            color: black;
+            cursor: pointer;
+          }
+          a:hover,
+          &:hover {
+            cursor: pointer;
+            background-color: lightness(blue, 50%);
+          }
         }
       }
     }
@@ -228,13 +235,12 @@ ui-chat {
     display: inline-block;
     .chatInput {
       .ui-chat-emoji-insert{
-
+        padding: 3px;
       }
       .ui-chat-input-mention{
         background-color: rgba(0, 255, 0, 0.1);
         border: 1px solid black;
         padding: 3px;
-        margin-right: 3px;
       }
       .ui-chat-input-pm-username{
         background-color: rgba(0, 0, 255, 0.1);
@@ -299,6 +305,40 @@ ui-chat {
     -ms-user-select: none;
     user-select: none;
   }
+  .ui-chat-collapse-button.right{
+    right: 30px;
+    .ui-chat-collapse-button-inner:before{
+      @media only screen and (min-width: 768px) {
+        font-weight: bold;
+        content: '>';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+      @media only screen and (max-width: 767px) {
+        font-weight: bold;
+        content: '/\\';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+    }
+  }
+  .ui-chat-collapse-button.left{
+    left: 30px;
+    .ui-chat-collapse-button-inner:before{
+      @media only screen and (min-width: 768px) {
+        font-weight: bold;
+        content: '<';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+      @media only screen and (max-width: 767px) {
+        font-weight: bold;
+        content: '/\\';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+    }
+  }
   .ui-chat-collapse-button{
     background-color: rgba(220, 220, 220, 0.50);
     -webkit-transition-duration: 0.5s; /* Safari */
@@ -309,7 +349,6 @@ ui-chat {
       transition-duration: 0.5s;
     }
     position: absolute;
-    right: 30px;
     margin-top: -30px;
     padding: 4px 6px;
     display: inline-block;
@@ -330,7 +369,27 @@ ui-chat {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    .ui-chat-collapse-button-inner{
+  }
+  .ui-chat-uncollapse-button.right{
+    right: 30px;
+    .ui-chat-uncollapse-button-inner:before{
+      @media only screen and (min-width: 768px) {
+        font-weight: bold;
+        content: '<';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+      @media only screen and (max-width: 767px) {
+        font-weight: bold;
+        content: '\\/';
+        -webkit-transition-duration: 0s; /* Safari */
+        transition-duration: 0s;
+      }
+    }
+  }
+  .ui-chat-uncollapse-button.left{
+    left: 30px;
+    .ui-chat-uncollapse-button-inner:before{
       @media only screen and (min-width: 768px) {
         font-weight: bold;
         content: '>';
@@ -339,7 +398,7 @@ ui-chat {
       }
       @media only screen and (max-width: 767px) {
         font-weight: bold;
-        content: '/\\';
+        content: '\\/';
         -webkit-transition-duration: 0s; /* Safari */
         transition-duration: 0s;
       }
@@ -355,7 +414,6 @@ ui-chat {
       transition-duration: 0.5s;
     }
     position: absolute;
-    right: 30px;
     margin-top: -30px;
     padding: 4px 6px;
     display: inline-block;
@@ -376,19 +434,5 @@ ui-chat {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    .ui-chat-uncollapse-button-inner{
-      @media only screen and (min-width: 768px) {
-        font-weight: bold;
-        content: '<';
-        -webkit-transition-duration: 0s; /* Safari */
-        transition-duration: 0s;
-      }
-      @media only screen and (max-width: 767px) {
-        font-weight: bold;
-        content: '\\/';
-        -webkit-transition-duration: 0s; /* Safari */
-        transition-duration: 0s;
-      }
-    }
   }
 }

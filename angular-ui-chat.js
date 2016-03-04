@@ -164,7 +164,7 @@
           for (var i = 0; i < emojiArray.length; i++) {
             if(message.indexOf(emojiArray[i]) > -1){
               $log.debug('replacing emoji - ' + message);
-              message = message.replace(emojiArray[i], '<i contenteditable="false" class="twa twa-' + emojiArray[i].replace(':','').replace(':','').replace('_','-').replace('_','-').replace('_','-') + '"></i><span  contenteditable="true" cursorend> </span>');
+              message = message.replace(emojiArray[i], '<i contenteditable="false" class="ui-chat-emoji-insert twa twa-' + emojiArray[i].replace(':','').replace(':','').replace('_','-').replace('_','-').replace('_','-') + '"></i><span  contenteditable="true" cursorend> </span>');
               $log.debug('replaced emoji - ' + message);
               //start over the search if there are still :
               if($scope.chatoptions.emoji === 'twa' && message.indexOf(':') > -1 && message.lastIndexOf(':') !== message.indexOf(':')){
@@ -247,7 +247,7 @@
                       };
                     }
                     if($scope.uiChatMessage.indexOf('<span class="ui-chat-input-mention" contenteditable="false"') === -1){
-                      $scope.uiChatMessage = $scope.uiChatMessage.replace('@' + usermention,'<span class="ui-chat-input-mention" contenteditable="false" cursorend>@' + usermention + "</span>");
+                      $scope.uiChatMessage = $scope.uiChatMessage.replace('@' + usermention,'<span class="ui-chat-input-mention" contenteditable="false" cursorend>@' + usermention + "</span>&nbsp;");
                     }
                   }
                 }
@@ -351,7 +351,10 @@
       template:
       '<div class="ui-chat-main">' +
         '<div class="ui-chat-users"  ng-class="{left:chatoptions.usersListSide===\'left\',right:chatoptions.usersListSide===\'right\', collapsed: uiChatUsersCollapsed}">' +
-          '<div ng-repeat="user in chatoptions.users"><a class="ui-chat-username" ng-click="usernameClicked(user)">{{user.username}}</a></div>' +
+          '<div class="ui-chat-user" ng-repeat="user in chatoptions.users">'+
+            '<img class="ui-chat-userimage" ng-if="user.image" src="{{user.image}}">' +
+            '<a class="ui-chat-username" ng-click="usernameClicked(user)">{{user.username}}</a>'+
+          '</div>' +
         '</div>' +
         '<div class="ui-chat-chat" ng-class="{collapsed: uiChatUsersCollapsed}" ui-chat-scroll-bottom="chatoptions.messages">' +
           '<div ng-repeat="message in chatoptions.messages" class="ui-chat-message">' +
@@ -396,8 +399,8 @@
           '</div>' +
         '</div>' +
       '</div>' +
-      '<button class="ui-chat-collapse-button"  ng-hide="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed"><span class="ui-chat-collapse-button-inner"></span></button>' +
-      '<button class="ui-chat-uncollapse-button" ng-show="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed"><span class="ui-chat-uncollapse-button-inner"></span></button>' +
+      '<button class="ui-chat-collapse-button"  ng-hide="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed" ng-class="{left:chatoptions.usersListSide===\'left\',right:chatoptions.usersListSide===\'right\'}"><span class="ui-chat-collapse-button-inner"></span></button>' +
+      '<button class="ui-chat-uncollapse-button" ng-class="{left:chatoptions.usersListSide===\'left\',right:chatoptions.usersListSide===\'right\'}"  ng-show="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed"><span class="ui-chat-uncollapse-button-inner"></span></button>' +
       '<div class="ui-chat-inputArea">' +
         '<div id="ui-chat-input-id" contenteditable="true" class="chatInput" ng-model="uiChatMessage" ui-chat-caret="uiChatCaret" ng-change="uiChatIsTyping(uiChatMessage)" ui-ng-enter="uiChatMessageSent(uiChatMessage)"></div>' +
         '<a href="http://www.emoji-cheat-sheet.com/" ng-if="chatoptions.emoji" target="_blank"><i class="twa ui-chat-emoticon"></i></a>' +
