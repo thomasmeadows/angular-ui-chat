@@ -66,15 +66,34 @@
       }
     }
 
+    var getRange = function(){
+      var rangeObject = {};
+      var sel = window.getSelection();
+      var range = sel.getRangeAt(0);
+      rangeObject.start = range.startOffset;
+      rangeObject.end = range.endOffset;
+      var clonedText = range.cloneContents();
+      var div = document.createElement('div');
+      div.appendChild(clonedText);
+      rangeObject.text = div.innerHTML;
+      // el.innerHTML.replace(el.innerHTML, "<i>" + el.innerHTML + "</i>");
+      return rangeObject;
+    };
+
     return {
       restrict: 'A',
       scope: {
         uiChatCaret: '=',
+        uiChatSelected: '='
       },
       link: function(scope, element, attrs) {
         if (!scope.uiChatCaret) scope.uiChatCaret = {};
-
+        if (!scope.uiChatSelected) scope.uiChatSelected = {};
+        element.on('mouseup', function(event) {
+          scope.uiChatSelected = getRange();
+        });
         element.on('keydown keyup click', function(event) {
+          scope.uiChatSelected = getRange();
           scope.$apply(function() {
             scope.uiChatCaret.get = getPos(element[0]);
           });
@@ -110,6 +129,7 @@
     return {
       restrict: 'E',
       controller: function($log, $scope) {
+        $scope.htmlPopup = false;
         if($scope.chatoptions.emoji === 'twa'){
           if(require){
             var emojiArray = require('./emoji.json');
@@ -264,6 +284,36 @@
 
         };
 
+        $scope.italicizeText = function(){
+          if($scope.uiChatSelected.text){
+            if($scope.uiChatMessage.indexOf('<i>' + $scope.uiChatSelected.text + '</i>') > -1){
+              $scope.uiChatMessage = $scope.uiChatMessage.replace('<i>' + $scope.uiChatSelected.text + '</i>' , $scope.uiChatSelected.text);
+            }else{
+              $scope.uiChatMessage = $scope.uiChatMessage.replace($scope.uiChatSelected.text, '<i>' + $scope.uiChatSelected.text + '</i>');
+            }
+          }
+        };
+
+        $scope.boldText = function(){
+          if($scope.uiChatSelected.text){
+            if($scope.uiChatMessage.indexOf('<b>' + $scope.uiChatSelected.text + '</b>') > -1){
+              $scope.uiChatMessage = $scope.uiChatMessage.replace('<b>' + $scope.uiChatSelected.text + '</b>' , $scope.uiChatSelected.text);
+            }else{
+              $scope.uiChatMessage = $scope.uiChatMessage.replace($scope.uiChatSelected.text, '<b>' + $scope.uiChatSelected.text + '</b>');
+            }
+          }
+        };
+
+        $scope.underlineText = function(){
+          if($scope.uiChatSelected.text){
+            if($scope.uiChatMessage.indexOf('<u>' + $scope.uiChatSelected.text + '</u>') > -1){
+              $scope.uiChatMessage = $scope.uiChatMessage.replace('<u>' + $scope.uiChatSelected.text + '</u>' , $scope.uiChatSelected.text);
+            }else{
+              $scope.uiChatMessage = $scope.uiChatMessage.replace($scope.uiChatSelected.text, '<u>' + $scope.uiChatSelected.text + '</u>');
+            }
+          }
+        };
+
         $scope.uiChatMessageSent = function(message){
 
           //set up variables for message being sent
@@ -401,9 +451,15 @@
       '</div>' +
       '<button class="ui-chat-collapse-button"  ng-hide="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed" ng-class="{left:chatoptions.usersListSide===\'left\',right:chatoptions.usersListSide===\'right\'}"><span class="ui-chat-collapse-button-inner"></span></button>' +
       '<button class="ui-chat-uncollapse-button" ng-class="{left:chatoptions.usersListSide===\'left\',right:chatoptions.usersListSide===\'right\'}"  ng-show="uiChatUsersCollapsed" ng-click="uiChatUsersCollapsed = !uiChatUsersCollapsed"><span class="ui-chat-uncollapse-button-inner"></span></button>' +
+      '<div class="ui-chat-html-popup" ng-if="htmlPopup">' +
+        '<span ng-show="chatoptions.html.bold" class="ui-chat-html-popup-each-item" ng-click="boldText()"><b>B</b></span>' +
+        '<span ng-show="chatoptions.html.italicize" class="ui-chat-html-popup-each-item" ng-click="italicizeText()"><i>I</i></span>' +
+        '<span ng-show="chatoptions.html.underline" class="ui-chat-html-popup-each-item" ng-click="underlineText()"><u>U</u></span>' +
+      '</div>' +
       '<div class="ui-chat-inputArea">' +
-        '<div id="ui-chat-input-id" contenteditable="true" class="chatInput" ng-model="uiChatMessage" ui-chat-caret="uiChatCaret" ng-change="uiChatIsTyping(uiChatMessage)" ui-ng-enter="uiChatMessageSent(uiChatMessage)"></div>' +
-        '<a href="http://www.emoji-cheat-sheet.com/" ng-if="chatoptions.emoji" target="_blank"><i class="twa ui-chat-emoticon"></i></a>' +
+        '<div id="ui-chat-input-id" contenteditable="true" class="chatInput" ng-model="uiChatMessage" ui-chat-caret="uiChatCaret" ui-chat-selected="uiChatSelected" ng-change="uiChatIsTyping(uiChatMessage)" ui-ng-enter="uiChatMessageSent(uiChatMessage)"></div>' +
+        '<a class="ui-chat-emoticon-link" href="http://www.emoji-cheat-sheet.com/" ng-show="chatoptions.emoji" target="_blank"><i class="twa ui-chat-emoticon"></i></a>' +
+        '<a ng-show="chatoptions.html" class="ui-chat-html" ng-click="htmlPopup = !htmlPopup">&lt;html&gt;</a>' +
       '</div>' +
       '<div class="ui-chat-feedback" ng-show="chatoptions.userFeedback.message">' +
         '{{chatoptions.userFeedback.message}}' +

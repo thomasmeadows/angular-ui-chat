@@ -24,14 +24,15 @@ A small library for making a custom chatroom.  This addon is purely front-end so
   - [x] Private Messages
   - [x] Admin abilities
   - [x] Parse on key up Emoticons/PM/Mention
-  - [ ] User Settings
-  - [ ] Custom User Levels
-  - [ ] Themes
-  - [ ] HTML - bold
-  - [ ] HTML - underline
+  - [x] HTML - bold
+  - [x] HTML - underline
+  - [x] HTML - italics
   - [ ] HTML - links
   - [ ] HTML - size increase
   - [ ] HTML - images
+  - [ ] User Settings
+  - [ ] Custom User Levels
+  - [ ] Themes
 
 ## Usage
 
@@ -60,6 +61,12 @@ A small library for making a custom chatroom.  This addon is purely front-end so
       mentionParse: true,
       emojiParse: true,
       pmParse: true,
+      //object to enable html input / false to disable
+      html: {
+        italicize: true,
+        bold: true,
+        underline: true
+      },
       //end input box filters
       defaultCurseReplacer: '$|^&!',
       users: [arrayOfUsersInChat],

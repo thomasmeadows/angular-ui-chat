@@ -1,3 +1,6 @@
+# 1.2.2
+Ability to bold, italicize, underline in input box
+
 # 1.2.1
 Added space after mention auto parse
 Added class for parsed emojis

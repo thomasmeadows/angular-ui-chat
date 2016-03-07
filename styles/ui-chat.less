@@ -250,9 +250,7 @@ ui-chat {
       }
       width: 100%;
       min-height: 50px;
-      font-size: 125%;
-      font-weight: bold;
-      padding: 10px;
+      padding: 15px;
       background-color: #fff;
       background-image: none;
       border: 1px solid black;
@@ -260,19 +258,30 @@ ui-chat {
       box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
       transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
-  }
-  .ui-chat-emoticon{
-    position: absolute;
-    right: 15px;
-    bottom: 10px;
-    padding: 15px;
-    background-image: url("https://twemoji.maxcdn.com/svg/1f603.svg");
-    //large height
-    height: 1.33em;
-    width: 1.33em;
-    margin: 0 0.0665em 0 0.133em;
-    vertical-align: -0.133em;
-    background-size: 1.33em 1.33em;
+    .ui-chat-html{
+      font-size: .6em;
+      font-weight: 700;
+      position: absolute;
+      right: 45px;
+      padding: 5px;
+      margin-top: -35px;
+      cursor: pointer;
+    }
+    .ui-chat-emoticon-link{
+      position: absolute;
+      right: 15px;
+      padding: 5px;
+      margin-top: -40px;
+    }
+    .ui-chat-emoticon{
+      background-image: url("https://twemoji.maxcdn.com/svg/1f603.svg");
+      //large height
+      height: 1.33em;
+      width: 1.33em;
+      margin: 0 0.0665em 0 0.133em;
+      vertical-align: -0.133em;
+      background-size: 1.33em 1.33em;
+    }
   }
   .ui-chat-delete-button{
     background-color: rgba(255, 0, 0, 0.5);
@@ -434,5 +443,20 @@ ui-chat {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+  .ui-chat-html-popup{
+    position: absolute;
+    right: 16px;
+    bottom: 50px;
+    background-color: white;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    font-size: 2em;
+    z-index: 1;
+    .ui-chat-html-popup-each-item{
+      cursor: pointer;
+      padding: 5px;
+    }
   }
 }
