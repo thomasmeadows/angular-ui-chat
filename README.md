@@ -3,13 +3,16 @@
 
 A small library for making a custom chatroom.  This addon is purely front-end so how you send data to it is up to you.
 
+[NPM](https://www.npmjs.com/package/angular-ui-chat)
+
+[Github](https://github.com/thomasmeadows/angular-ui-chat)
+
 ![chatdemo](https://cloud.githubusercontent.com/assets/11771776/13540000/0748f90c-e222-11e5-8eaf-880b9cd373f9.gif)
 
 ## Dependencies
   Angular 1.x
 
 ## Installation
-
   npm install angular-ui-chat --save
 
 ## Feature Roadmap
